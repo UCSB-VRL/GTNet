@@ -7,18 +7,9 @@ import numpy as np
 import pool_pairing  as ROI 
 import random
 import torchvision.models as models
-import torch.hub
 from guided_transformer import *
 
-lin_size=1024
-ids=80
-context_size=1024
-sp_size=1024
-mul=3
-out_size=512
-pool_size=(10,10)
-pool_size_pose=(18,5,5)
-embedding_vector_size=600
+
 class Flatten(nn.Module):
    def __init__(self):
         super(Flatten,self).__init__()
@@ -57,7 +48,7 @@ class FC_block(nn.Module):
                 return self.block(x)
 
 class GTNet(nn.Module):
-        def __init__(self):
+        def __init__(self,lin_size=1024,embedding_vector_size=600,pool_size=(10,10),out_size=512):
                 super(GTNet,self).__init__()
                 self.flat= Flatten()
                 model =models.resnet152(pretrained=True)
@@ -96,14 +87,15 @@ class GTNet(nn.Module):
                 ####### Prediction model for transformer features##################
                 self.lin_trans_head=FC_block(in_dim=lin_size*2+4,hid_dim=lin_size,out_dim=out_size)
                 self.FC_P=nn.Sequential(nn.Linear(out_size*3,29),)
+                self.pool_size=pool_size
                 ########################################	
         def forward(self,x,pairs_info,pairs_info_augmented,image_id,flag_,phase):
                 F = self.backbone(x)###        
-                rois_people,rois_objects,spatial_locs,union_box,objects_embed,stats= ROI.get_pool_loc(F,image_id,flag_,size=pool_size,spatial_scale=25,batch_size=len(pairs_info))
+                rois_people,rois_objects,spatial_locs,union_box,objects_embed,stats= ROI.get_pool_loc(F,image_id,flag_,size=self.pool_size,spatial_scale=25,batch_size=len(pairs_info))
                 ### Defining The Pooling Operations ####### 
                 x,y=F.size()[2],F.size()[3]	
-                hum_pool=nn.AvgPool2d(pool_size,padding=0,stride=(1,1))
-                obj_pool=nn.AvgPool2d(pool_size,padding=0,stride=(1,1))
+                hum_pool=nn.AvgPool2d(self.pool_size,padding=0,stride=(1,1))
+                obj_pool=nn.AvgPool2d(self.pool_size,padding=0,stride=(1,1))
                 context_pool=nn.AvgPool2d((x,y),padding=0,stride=(1,1))
                 #################################################
                 
