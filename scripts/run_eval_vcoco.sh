@@ -1,1 +1,1 @@
-python3 calculate_map_vcoco.py -fw soa_vcoco -sa 41 -t test
+python3 calculate_map_vcoco.py -fw soa_paper -sa 41 -t test
