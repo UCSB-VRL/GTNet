@@ -91,7 +91,7 @@ class vcoco_Dataset(Dataset):
         elif self.flag=='test':
             self.vcoco_frame= [x for x in self.vcoco_frame_file.keys() if x not in str(bad_detections_test)]
             self.root_dir = root_dir
-            self.transform = transform
+        self.transform = transform
 
     def __len__(self):
         return len(self.vcoco_frame)
