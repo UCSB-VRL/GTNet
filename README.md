@@ -34,7 +34,7 @@ Folder description can be found in our old [work](https://github.com/ASMIftekhar
 
 3. Setup enviroment by running (used python 3.6.9):
 ```
-pip3 install -r requirements3.txt
+pip3 install -r requirements.txt
 ```
 4. Download the best model from [here](https://drive.google.com/file/d/1cm9ICBSJZK3OuMWoxF2rgznDM4Vf-V7s/view?usp=sharing) and keep it inside a folder in the repository. We assume that you put it inside soa_vcoco folder in the repository. You can change it to anything you want.
 
