@@ -13,7 +13,7 @@ This codebase only contains code for vcoco dataset.
 
 |Method| mAP (Scenario 1)|
 |:---:|:---:|
-|[VSGNet](openaccess.thecvf.com/content_CVPR_2020/papers/Ulutan_VSGNet_Spatial_Attention_Network_for_Detecting_Human_Object_Interactions_Using_CVPR_2020_paper.pdf)| 51.8|
+|[VSGNet](https://github.com/ASMIftekhar/VSGNet)| 51.8|
 |[ConsNet](https://arxiv.org/abs/2008.06254)| 53.2|
 |[IDN](https://arxiv.org/abs/2010.16219)| 53.3 |
 |[OSGNet](https://www.tandfonline.com/doi/full/10.1080/0952813X.2020.1818293)| 53.4  |
