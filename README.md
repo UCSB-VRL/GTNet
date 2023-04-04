@@ -18,7 +18,7 @@ This codebase only contains code for vcoco dataset.
 |[IDN](https://arxiv.org/abs/2010.16219)| 53.3 |
 |[OSGNet](https://www.tandfonline.com/doi/full/10.1080/0952813X.2020.1818293)| 53.4  |
 |[Sun et al.](https://dl.acm.org/doi/10.1145/3512527.3531438)| 55.2 |
-|[**GTNet**](https://arxiv.org/abs/2003.05541)| **59.3** |
+|[**GTNet**](https://arxiv.org/abs/2003.05541)| **58.3** |
 
 ## Installation & Setup
 1. Clone repository (recursively):
